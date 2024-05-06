@@ -60,10 +60,13 @@ function random_song() {
   var songlist = "";
   var randomsong = "";
   var lengtharray = "";
+  var thearray = "";
   songlist = search("");
   lengtharray = songlist.length;
-  randomsong = songlist[Math.floor(Math.random() * lengtharray)];
+  thearray = songlist[Math.floor(Math.random() * lengtharray)];
+  randomsong = thearray.url
   console.log(randomsong);
+  
 }
 
 search_list("");
