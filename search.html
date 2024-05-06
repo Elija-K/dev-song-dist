@@ -60,7 +60,7 @@ function random_song() {
   var songlist = "";
   var randomsong = "";
   songlist = search("");
-  randomsong = songlist.random;
+  randomsong = songlist.random();
   console.log(randomsong)
   window.location.href = randomsong;
 }
