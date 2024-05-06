@@ -62,8 +62,7 @@ function random_song() {
   var lengtharray = "";
   songlist = search("");
   lengtharray = songlist.length;
-  randomsong = Math.floor(Math.random() * lengtharray);;
-  console.log(randomsong)
+  randomsong = songlist.at(Math.floor(Math.random() * lengtharray));
   window.location.href = randomsong;
 }
 
