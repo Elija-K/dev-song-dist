@@ -64,8 +64,9 @@ function random_song() {
   songlist = search("");
   lengtharray = songlist.length;
   thearray = songlist[Math.floor(Math.random() * lengtharray)];
-  randomsong = thearray.url
+  randomsong = "https://elija-k.github.io/" + thearray.url;
   console.log(randomsong);
+  window.location.href(randomsong);
   
 }
 
