@@ -59,8 +59,10 @@ function search_list(query) {
 function random_song() {
   var songlist = "";
   var randomsong = "";
+  var lengtharray = "";
   songlist = search("");
-  randomsong = songlist.random();
+  lengtharray = songlist.length;
+  randomsong = Math.floor(Math.random() * lengtharray);;
   console.log(randomsong)
   window.location.href = randomsong;
 }
