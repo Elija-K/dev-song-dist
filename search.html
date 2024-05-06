@@ -5,6 +5,7 @@ title: Suchen
 <body>
   <div>
     <input class="form-control me-2 mt-4 mb-4" type="text" placeholder="Suchen" id="search-box-js" name="query" oninput="search_text()">
+    <button class="btn btn-secondary" onclick="random_song()">Random Song</button>
   </div>
 
 
@@ -57,6 +58,11 @@ console.log(query);
   }
   document.getElementById('search-results').innerHTML = html;
   console.log(document.getElementById("search-results").innerHTML);
+}
+function random_song() {
+  var songlist = "";
+  songlist = search("");
+  console.log(songlist);
 }
 
 search_list("");
