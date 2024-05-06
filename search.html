@@ -30,7 +30,6 @@ title: Suchen
     var value = inputElement.value;
     console.log(value);
     search_list(value);
-    console.log(search_list(value));
   }
 
   function search(query) {
@@ -54,6 +53,7 @@ console.log(query);
   for (var i = 0; i < results.length; i++) {
     var post = results[i];
     html += '<li><a href="' + post.url + '">' + post.title + ' - ' + post.interpret + '</a></li>';
+    console.log(html);
   }
   document.getElementById('search-results').innerHTML = html;
 }
