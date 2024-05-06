@@ -30,7 +30,6 @@ title: Suchen
     var inputElement = document.getElementById("search-box-js");
     var value = inputElement.value;
     search_list(value);
-    console.log(value);
   }
 
   function search(query) {
@@ -47,22 +46,23 @@ title: Suchen
 
 function search_list(query) {
 // Use the attribute value as needed
-console.log(query);
+
 
   var results = search(query);
   var html = '';
   for (var i = 0; i < results.length; i++) {
     var post = results[i];
     html += '<li><a href="' + post.url + '">' + post.title + ' - ' + post.interpret + '</a></li>';
-    console.log(html);
   }
   document.getElementById('search-results').innerHTML = html;
-  console.log(document.getElementById("search-results").innerHTML);
 }
 function random_song() {
   var songlist = "";
+  var randomsong = "";
   songlist = search("");
-  console.log(songlist);
+  randomsong = songlist.random;
+  console.log(randomsong)
+  window.location.href = randomsong;
 }
 
 search_list("");
