@@ -15,6 +15,7 @@ title: Suchen
 </body>
 
 <script>
+  console.log(document.cookie);
   {% assign songs = site.html_pages | where: "dir", "/songs/" %}
   var searchIndex = [
     {% for page in songs %}
@@ -65,7 +66,6 @@ function random_song() {
   lengtharray = songlist.length;
   thearray = songlist[Math.floor(Math.random() * lengtharray)];
   randomsong = "https://elija-k.github.io/" + thearray.url;
-  console.log(randomsong);
   window.location.href = randomsong;
   
 }
