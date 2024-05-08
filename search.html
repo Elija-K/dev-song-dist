@@ -71,7 +71,9 @@ function random_song() {
   window.location.href = randomsong;
 }
 function list_favorite() {
-  // Show document.cookies an, im Format wie bei der Function search()
+  if (document.cookie = "undefined") {
+    document.cookie = [];
+  }
   favorites = "";
   favorites = document.cookie;
   if (favorites = "undefined") {
