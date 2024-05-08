@@ -80,7 +80,14 @@ function list_favorite() {
     document.getElementById("favorite-results").innerHTML = "<p>Du hast keine Favoriten :(</p>";
   }
   else {
-  document.getElementById("favorite-results").innerHTML = favorites;
+    var innerHTML_favorites = "";
+    const regex = /songs=\[.*?\]/;
+    const match = favorites.match(regex);
+    if (match) {
+      const extractedPart = match [0];
+      extractedPart = innerHTML_favorites.replace('songs=', '');
+    }
+    document.getElementById("favorite-results").innerHTML = innerHTML_favorites;
   }
 }
 search_list("");
