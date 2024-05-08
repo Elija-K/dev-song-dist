@@ -12,7 +12,7 @@ title: Suchen
   <div id="favorite-results">
 
   </div>
-  <h6>Alle songs</h6>
+  <h5>Alle songs</h5>
   <div id="search-results">
     
   </div> 
@@ -78,7 +78,9 @@ function list_favorite() {
   if (favorites = ""){
     document.getElementById("favorite-results").innerHTML = "<p>Du hast keine Favoriten</p>"
   }
+  else {
   document.getElementById("favorite-results").innerHTML = favorites;
+  }
 }
 search_list("");
 list_favorite();
