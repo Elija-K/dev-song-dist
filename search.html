@@ -75,7 +75,7 @@ function list_favorite() {
   // Show document.cookies an, im Format wie bei der Function search()
   favorites = "";
   favorites = document.cookie;
-  if (favorites = ""){
+  if (favorites = undefined){
     document.getElementById("favorite-results").innerHTML = "<p>Du hast keine Favoriten</p>"
   }
   else {
