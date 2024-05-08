@@ -8,11 +8,11 @@ title: Suchen
     <button class="btn btn-secondary" onclick="random_song()">Random Song</button>
   </div>
 
-  <h3>Deine Favoriten</h3>
+  <h6>Deine Favoriten</h6>
   <div id="favorite-results">
 
   </div>
-  <h3>Alle songs</h3>
+  <h6>Alle songs</h6>
   <div id="search-results">
     
   </div> 
@@ -75,6 +75,9 @@ function list_favorite() {
   // Show document.cookies an, im Format wie bei der Function search()
   favorites = "";
   favorites = document.cookie;
+  if (favorites = ""){
+    document.getElementById("favorite-results").innerHTML = Du hast keine Favoriten
+  }
   document.getElementById("favorite-results").innerHTML = favorites;
 }
 search_list("");
