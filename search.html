@@ -76,10 +76,11 @@ function list_favorite() {
   favorites = "";
   favorites = document.cookie;
   if (favorites = ""){
-    document.getElementById("favorite-results").innerHTML = Du hast keine Favoriten
+    document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten"
   }
   document.getElementById("favorite-results").innerHTML = favorites;
 }
 search_list("");
+list_favorite();
 
 </script>
