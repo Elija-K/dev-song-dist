@@ -7,7 +7,6 @@ title: Suchen
     <input class="form-control me-2 mt-4 mb-4" type="text" placeholder="Suchen" id="search-box-js" name="query" oninput="search_text()">
     <button class="btn btn-secondary" onclick="random_song()">Random Song</button>
   </div>
-
   <h5>Deine Favoriten</h5>
   <div id="favorite-results">
 
@@ -75,7 +74,7 @@ function list_favorite() {
   // Show document.cookies an, im Format wie bei der Function search()
   favorites = "";
   favorites = document.cookie;
-  if (favorites = ""){
+  if (favorites = "") {
     document.getElementById("favorite-results").innerHTML = "<p>Du hast keine Favoriten</p>";
   }
   else {
