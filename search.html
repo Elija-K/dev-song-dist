@@ -71,38 +71,39 @@ function random_song() {
   window.location.href = randomsong;
 }
 function list_favorite() {
-  }
-  favorites = "";
-  favorites = document.cookie;
-  if (favorites = "undefined") {
-    document.getElementById("favorite-results").innerHTML = "<p>Du hast keine Favoriten :(</p>";
-  }
-  else {
-    const startIndex = favorites.indexOf('songs=');
-    if (startIndex === -1) {
-      document.getElementById("favorite-results").innerHTML = "<p>Du hast keine Favoriten :(</p>";
-    }
-    const endIndex = favorites.indexOf(';', startIndex);
-    let songString;
-    if (endIndex === -1) {
-      songString = favorites.substring(startIndex + 6);
-    
-    } else {
-      songString = favorites.substring(startIndex + 6, endIndex);
-    }
-    try {
-      const songsArray = JSON.parse(decodeURIComponent(songsString));
-    } catch (error) {
-      console.error("Fehler beim Parsen der Cookie-Daten", error);
-      document.getElementById("favorite-results").innerHTML = "<p>Deine Favoriten konnten nicht geladen werden :(</p>"
-    }
-    if (songs) {
-      console.log(songs);
-    }
-    favhtml += '<li><a href="' + url + '">' + title + ' - ' + interpret + '</a></li>';
-    document.getElementById("favorite-results").innerHTML = favhtml;
+  // Get the cookies associated with the current document
+  const cookies = document.cookie.split(';');
 
+  // Find the 'songs' cookie
+  const songsCookie = cookies.find(cookie => cookie.trim().startsWith('songs='));
+
+  if (songsCookie) {
+    // Extract the value of the 'songs' cookie
+    const songsJson = songsCookie.trim().substring('songs='.length);
+
+    // Parse the JSON string into an array of objects
+    const songs = JSON.parse(songsJson);
+
+    // Log the array of songs to the console
+    console.log(songs);
+
+    // Store the url, title, and interpret properties of each song in a variable
+    const songDetails = songs.map(song => {
+      return { url: song.url, title: song.title, interpret: song.interpret };
+    });
+
+    // Log the array of song details to the console
+    console.log(songDetails);
+
+    // Do something with the array of song details, such as displaying it on the page
+    //...
+  } else {
+    console.log('No songs cookie found');
   }
+
+    favhtml += '<li><a href="' + song.url + '">' + song.title + ' - ' + song.interpret + '</a></li>';
+    document.getElementById("favorite-results").innerHTML = favhtml;
+}
 search_list("");
 list_favorite();
 
