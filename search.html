@@ -100,7 +100,7 @@ function list_favorite() {
   } else {
     console.log('No songs cookie found');
   }
-
+  var favhtml = "";
     favhtml += '<li><a href="' + song.url + '">' + song.title + ' - ' + song.interpret + '</a></li>';
     document.getElementById("favorite-results").innerHTML = favhtml;
 }
