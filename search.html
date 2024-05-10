@@ -71,40 +71,25 @@ function random_song() {
   window.location.href = randomsong;
 }
 function list_favorite() {
-  // Get the cookies associated with the current document
   const cookies = document.cookie.split(';');
-
-  // Find the 'songs' cookie
   const songsCookie = cookies.find(cookie => cookie.trim().startsWith('favorites='));
 
   if (songsCookie) {
-    // Extract the value of the 'songs' cookie
-    const songsJson = songsCookie.trim().substring('favorites='.length);
-    // Decode the JSON string
-    const decodedsongsJson = decodeURIComponent(songsJson);
-    // Parse the JSON string into an array of objects
-    const songs = JSON.parse(decodedsongsJson);
+    const songsJson = decodeURIComponent(songsCookie.trim().substring('favorites='.length));
+    const songs = JSON.parse(songsJson);
 
-    // Log the array of songs to the console
-    console.log(songs);
+    // Map each song to an HTML list item and construct the HTML string
+    const favhtml = songs.map(song => {
+      return '<li><a href="' + song.url + '">' + song.title + ' - ' + song.interpret + '</a></li>';
+    }).join(''); // Join the list items into a single string
 
-    // Store the url, title, and interpret properties of each song in a variable
-    const songDetails = songs.map(song => {
-      return { url: song.url, title: song.title, interpret: song.interpret };
-    });
-
-    // Log the array of song details to the console
-    console.log(songDetails);
-
-    // Do something with the array of song details, such as displaying it on the page
-    //...
+    // Update the inner HTML of the element with id "favorite-results"
+    document.getElementById("favorite-results").innerHTML = favhtml;
   } else {
     console.log('No songs cookie found');
   }
-  var favhtml = "";
-    favhtml += '<li><a href="' + songDetails.url + '">' + songDetails.title + ' - ' + songDetails.interpret + '</a></li>';
-    document.getElementById("favorite-results").innerHTML = favhtml;
 }
+
 search_list("");
 list_favorite();
 
