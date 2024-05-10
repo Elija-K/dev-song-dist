@@ -63,7 +63,7 @@
             </button>
           </div>
           <button class="btn btn-secondary" onclick="toggleAudio()">Play/Pause Song</button>
-          <button class="btn btn-secondary" onclick="toggle_favorite()">Add/Remove Favorite</button>
+          <button class="btn btn-secondary" onclick="addToFavorites({{ page.url }}, {{ page.title }}, {{ page.interpret }})">AddFavorite</button>
         </div>
         <div id="player" style="display: none;text-align: center;"></div> <!-- YT Video/Music Player -->
         <div class="mt-2 mt-md-4" id="songtext">
@@ -163,10 +163,28 @@ var player;
     document.getElementById("songtext").style.display = "block";
     document.getElementById("chords").style.display = "none";
   }
-  function toggle_favorite() {
-    // Der "String" sieht ungefähr so aus:
-    // document.cookie = "songs=[{"title": "1","Interpret": "2","url": "/tc-song-dist//songs/12.html"}]; expires=Mo, 8 May 2034 12:00:00 UTC; path=/tc-song-dist/";
+  function addToFavorites(url, title, interpret) {
+  // Get the existing favorites from the cookie or initialize an empty array
+  const cookies = document.cookie.split(';');
+  const songsCookie = cookies.find(cookie => cookie.trim().startsWith('favorites='));
+  let songs = [];
+  if (songsCookie) {
+    const songsJson = decodeURIComponent(songsCookie.trim().substring('favorites='.length));
+    songs = JSON.parse(songsJson);
   }
+
+  // Add the current song to the favorites array
+  songs.push({ url: url, title: title, interpret: interpret });
+
+  // Convert the favorites array to JSON and encode it
+  const encodedSongs = encodeURIComponent(JSON.stringify(songs));
+
+  // Set the cookie with the updated favorites
+  document.cookie = 'favorites=' + encodedSongs;
+
+  // Update the favorite list on the page
+  list_favorite();
+}
   </script>
 </body>
 </html>
