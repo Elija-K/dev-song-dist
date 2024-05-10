@@ -75,7 +75,7 @@ function list_favorite() {
   const cookies = document.cookie.split(';');
 
   // Find the 'songs' cookie
-  const songsCookie = cookies.find(cookie => cookie.trim().startsWith('songs='));
+  const songsCookie = cookies.find(cookie => cookie.trim().startsWith('favorites='));
 
   if (songsCookie) {
     // Extract the value of the 'songs' cookie
