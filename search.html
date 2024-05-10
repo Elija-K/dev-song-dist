@@ -90,7 +90,7 @@ function list_favorite() {
 
     // Store the url, title, and interpret properties of each song in a variable
     const songDetails = songs.map(song => {
-      return { url: songs.url, title: songs.title, interpret: songs.interpret };
+      return { url: song.url, title: song.title, interpret: song.interpret };
     });
 
     // Log the array of song details to the console
