@@ -75,9 +75,9 @@
   </div>
   <iframe src="https://elija-k.github.io/tc-song-dist/viewer-js/#/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
   <p id="YTLinkGrabber" hidden>{{ page.youtube }}</p>
-  <p id="URLGrabber">{{ page.url }}</p>
-  <p id="TITLEGrabber">{{ page.title }}</p>
-  <p id="interpretGrabber">{{ page.interpret }}</p>
+  <p id="UrlGrabber">{{ page.url }}</p>
+  <p id="TitleGrabber">{{ page.title }}</p>
+  <p id="InterpretGrabber">{{ page.interpret }}</p>
   <script>
 // Test Start
 // Test Start
@@ -150,8 +150,29 @@ var player;
 
 
   function add_favorite() {
-    console.log("Not Working!!!");
-    alert("Not Working!!!");
+    var songtitle = "";
+    var songinterpret = "";
+    var songurl = "";
+
+    songtitle = document.getElementById("TitleGrabber").innerHTML
+    songinterpret = document.getElementById("InterpretGrabber").innerHTML
+    songurl = document.getElementById("UrlGrabber").innerHTML
+  // Define the song data as a JavaScript object
+  var songData = {
+    title: songtitle,
+    interpret: songinterpret,
+    url: songurl
+};
+
+// Encode the JavaScript object into a JSON string
+var jsonString = JSON.stringify(songData);
+
+// Set the cookie named 'favorites' with the encoded JSON string
+document.cookie = "favorites=" + encodeURIComponent(jsonString) + "; expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
+
+// Verify that the cookie is set
+console.log("Cookie: "jsonString" has been set.");
+
   }
   </script>
 </body>
