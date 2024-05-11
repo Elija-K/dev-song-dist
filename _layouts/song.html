@@ -150,19 +150,21 @@ var player;
 
 
   function add_favorite() {
-    // Variables
-    var cookies = "";
-    var endfav = "";
-    var slicedfav = "";
-    var favorite = "";
-    var parsedfavorite = "";
-    // Start Code
-    cookies = document.cookie;
-    endfav = cookies.lastIndexOf(";");
-    slicedfav = cookies.slice(endfav);
-    console.log(slicedfav);
-    // parsedcookies = JSON.parse(favorite);
-    // console.log(parsedfavorite);
+
+    let name = favorites + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+    console.log(c);
   }
   </script>
 </body>

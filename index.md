@@ -45,6 +45,6 @@ Zum d App installiere, chasch Du do d Ahleitig finde. Klick uf de chnopf, mit de
 
 <script>
     if (document.cookie === "undefined") {
-        document.cookie = "username=John Doe; expires=Mon, 07 May 2029 12:00:00 UTC; path=/tc-song-dist";
+        document.cookie = "favorites=; expires=Mon, 07 May 2029 12:00:00 UTC; path=/tc-song-dist";
     }
 </script>

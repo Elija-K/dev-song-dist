@@ -71,23 +71,7 @@ function random_song() {
   window.location.href = randomsong;
 }
 function list_favorite() {
-  const cookies = document.cookie.split(';');
-  const songsCookie = cookies.find(cookie => cookie.trim().startsWith('favorites='));
-
-  if (songsCookie) {
-    const songsJson = decodeURIComponent(songsCookie.trim().substring('favorites='.length));
-    const songs = JSON.parse(songsJson);
-
-    // Map each song to an HTML list item and construct the HTML string
-    const favhtml = songs.map(song => {
-      return '<li><a href="' + song.url + '">' + song.title + ' - ' + song.interpret + '</a></li>';
-    }).join(''); // Join the list items into a single string
-
-    // Update the inner HTML of the element with id "favorite-results"
-    document.getElementById("favorite-results").innerHTML = favhtml;
-  } else {
-    console.log('No songs cookie found');
-  }
+  // Cookies kann man einfach etwas dazu hängen
 }
 
 search_list("");
