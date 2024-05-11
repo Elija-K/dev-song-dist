@@ -63,7 +63,7 @@
             </button>
           </div>
           <button class="btn btn-secondary" onclick="toggleAudio()">Play/Pause Song</button>
-          <button class="btn btn-secondary" onclick="addToFavorites({{ page.url }}, {{ page.title }}, {{ page.interpret }})">AddFavorite</button>
+          <button class="btn btn-secondary" onclick="add_favorite()">Add Favorite</button>
         </div>
         <div id="player" style="display: none;text-align: center;"></div> <!-- YT Video/Music Player -->
         <div class="mt-2 mt-md-4" id="songtext">
@@ -75,6 +75,9 @@
   </div>
   <iframe src="https://elija-k.github.io/tc-song-dist/viewer-js/#/songs/{{ page.akkorde }}" id="chords" style="display: none;height: 100vh;" class="mt-2 mt-md-4 ratio"></iframe>
   <p id="YTLinkGrabber" hidden>{{ page.youtube }}</p>
+  <p id="URLGrabber">{{ page.url }}</p>
+  <p id="TITLEGrabber">{{ page.title }}</p>
+  <p id="interpretGrabber">{{ page.interpret }}</p>
   <script>
 // Test Start
 // Test Start
@@ -146,45 +149,13 @@ var player;
 }
 
 
-// Test End
-// Test End
-// Test End
-
-  if('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/tc-song-dist/sw.js')
-    })
+  function add_favorite() {
+    var cookies = "";
+    var parsedcookies = "";
+    cookies = document.cookie
+    parsedcookies = JSON.parse(cookies);
+    console.log(parsedcookies);
   }
-  function show_chords() {
-    document.getElementById("songtext").style.display = "none";
-    document.getElementById("chords").style.display = "block"; 
-  }
-  function show_text() {
-    document.getElementById("songtext").style.display = "block";
-    document.getElementById("chords").style.display = "none";
-  }
-  function addToFavorites(url, title, interpret) {
-  // Get the existing favorites from the cookie or initialize an empty array
-  const cookies = document.cookie.split(';');
-  const songsCookie = cookies.find(cookie => cookie.trim().startsWith('favorites='));
-  let songs = [];
-  if (songsCookie) {
-    const songsJson = decodeURIComponent(songsCookie.trim().substring('favorites='.length));
-    songs = JSON.parse(songsJson);
-  }
-
-  // Add the current song to the favorites array
-  songs.push({ url: url, title: title, interpret: interpret });
-
-  // Convert the favorites array to JSON and encode it
-  const encodedSongs = encodeURIComponent(JSON.stringify(songs));
-
-  // Set the cookie with the updated favorites
-  document.cookie = 'favorites=' + encodedSongs;
-
-  // Update the favorite list on the page
-  list_favorite();
-}
   </script>
 </body>
 </html>
