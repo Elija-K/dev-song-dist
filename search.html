@@ -71,27 +71,35 @@ function random_song() {
   window.location.href = randomsong;
 }
 function list_favorite() {
-  // Cookies kann man einfach etwas dazu hängen
-  var name = "";
-  var ca = "";
-  var c = "";
-  var list = "";
+    // Retrieve the 'favorites' cookie value
+    var favoritesCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('favorites='));
 
-  name = "favorites=";
-    decodedCookie = decodeURIComponent(document.cookie);
-    ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        list = c.substring(name.length, c.length);
-      }
+    if (favoritesCookie) {
+        // Extract JSON string from the 'favorites' cookie value
+        var jsonString = decodeURIComponent(favoritesCookie.split('=')[1]);
+
+        try {
+            // Parse the JSON string into an object
+            var songData = JSON.parse(jsonString);
+
+            // Create HTML content for search result
+            var searchResultHTML = '<li><a href="' + songData.url + '">' + songData.title + ' - ' + songData.interpret + '</a></li>';
+
+            // Display the search result on the webpage
+            var searchResultsList = document.getElementById('favorite-results');
+            if (searchResultsList) {
+                searchResultsList.innerHTML = searchResultHTML;
+            } else {
+                console.error("Element with ID 'searchResults' not found.");
+            }
+        } catch (error) {
+            console.error("Error parsing JSON from 'favorites' cookie:", error);
+        }
+    } else {
+        console.error("Cookie 'favorites' not found.");
     }
-    return "";
-    console.log(list);
 }
+
 
 search_list("");
 list_favorite();
