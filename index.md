@@ -5,7 +5,7 @@ title: Home
 
 # TC Chläggi
 
-Hallo, ja mir hend ezt es eigets Äpp und sogar fascht alles handprogrammiert. Für Feedback und Verbesserigsvorschläg am beste uf mich direkt zuegah.
+Hallo, ja mir hend ezt es eigets Äpp und sogar fascht alles handprogrammiert. Für Feedback und Verbesserigsvorschläg am beste uf mich direkt zuegah. Und will alles immer Moderner wird verwende mir im TC App au Cookies, die sind notwendig damit du dini Lieblingslieder chasch eifach Favoritisiere und sie direkt als erschtäs ahzeige loh!
 
 ## Singbüechli
 
@@ -42,3 +42,9 @@ Zum d App installiere, chasch Du do d Ahleitig finde. Klick uf de chnopf, mit de
     </svg>
     Firefox
 </a>
+
+<script>
+    if (document.cookie = "undefined") {
+        document.cookie = "favorites=; expires=Mon, 7 May 2029 12:00:00 UTC" path=/tc-song-dist;
+    }
+</script>
