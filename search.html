@@ -77,11 +77,11 @@ function list_favorite() {
   var c = "";
   var list = "";
 
-  let name = "favorites=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
+  name = "favorites=";
+    decodedCookie = decodeURIComponent(document.cookie);
+    ca = decodedCookie.split(';');
     for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
+      c = ca[i];
       while (c.charAt(0) == ' ') {
         c = c.substring(1);
       }
