@@ -150,11 +150,19 @@ var player;
 
 
   function add_favorite() {
+    // Variables
     var cookies = "";
-    var parsedcookies = "";
-    cookies = document.cookie
-    parsedcookies = JSON.parse(cookies);
-    console.log(parsedcookies);
+    var endfav = "";
+    var slicedfav = "";
+    var favorite = "";
+    var parsedfavorite = "";
+    // Start Code
+    cookies = document.cookie;
+    endfav = cookies.lastIndexOf(";");
+    slicedfav = cookies.slice(endfav);
+    console.log(slicedfav);
+    // parsedcookies = JSON.parse(favorite);
+    // console.log(parsedfavorite);
   }
   </script>
 </body>
