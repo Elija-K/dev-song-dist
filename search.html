@@ -75,34 +75,46 @@ function list_favorite() {
     var favoritesCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('favorites='));
 
     if (favoritesCookie) {
+        console.log('Favorites cookie found:', favoritesCookie); // Debugging output
+
         // Extract JSON string from the 'favorites' cookie value
         var jsonString = decodeURIComponent(favoritesCookie.split('=')[1]);
+        console.log('Decoded JSON string:', jsonString); // Debugging output
 
         try {
-              if (jsonString.trim() !== '') {
-                var songData = JSON.parse(jsonString);
-              } else {
-                console.error("JSON string from 'favorites' cookie is empty.");
-              }
+            // Parse the JSON string into an array of song objects
+            var favoriteSongs = JSON.parse(jsonString);
+            console.log('Parsed favorite songs:', favoriteSongs); // Debugging output
 
+            // Create HTML content for displaying all favorite songs
+            var searchResultHTML = '<ul>';
 
-            // Create HTML content for search result
-            var searchResultHTML = '<li><a href="' + songData.url + '">' + songData.title + ' - ' + songData.interpret + '</a></li>';
+            // Loop through each song in the favoriteSongs array
+            favoriteSongs.forEach(function(song) {
+                searchResultHTML += '<li><a href="' + song.url + '">' + song.title + ' - ' + song.interpret + '</a></li>';
+            });
+
+            searchResultHTML += '</ul>';
+            console.log('Generated HTML content:', searchResultHTML); // Debugging output
 
             // Display the search result on the webpage
             var searchResultsList = document.getElementById('favorite-results');
             if (searchResultsList) {
+                // Use innerHTML to set the generated HTML content
                 searchResultsList.innerHTML = searchResultHTML;
+                console.log('HTML content set to element with ID "favorite-results".'); // Debugging output
             } else {
-                console.error("Element with ID 'searchResults' not found.");
+                console.error("Element with ID 'favorite-results' not found.");
+                document.getElementById("favorite-results").innerHTML = "Es ist ein Fehler aufgetreten (Error: 01) :("
             }
         } catch (error) {
             console.error("Error parsing JSON from 'favorites' cookie:", error);
+            document.getElementById("favorite-results").innerHTML = "Es ist ein Fehler aufgetreten (Error: 02) :("
         }
     } else {
         console.error("Cookie 'favorites' not found.");
-    }
-}
+        document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten (Error: 03) :("
+      }
 
 
 search_list("");
