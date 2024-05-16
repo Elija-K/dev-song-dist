@@ -12,12 +12,6 @@
   <link href="{{ site.baseurl }}/assets/css/main.css" rel="stylesheet">
 </head>
 
-<!-- ##################################### -->
-<!-- ## YOU Achived the Secret Dev Room ## -->
-<!-- ## call function secret()          ## -->
-<!-- ## to get your secret              ## -->
-<!-- ##################################### -->
-
 <body>
 
   
@@ -80,20 +74,20 @@
   <p id="TitleGrabber" hidden>{{ page.title }}</p>
   <p id="InterpretGrabber" hidden>{{ page.interpret }}</p>
   <script>
-function add_favorite() {
-  var songtitle = "";
-  var songinterpret = "";
-  var songurl = "";
+  function add_favorite() {
+    var songtitle = "";
+    var songinterpret = "";
+    var songurl = "";
 
-  songtitle = document.getElementById("TitleGrabber").innerHTML
-  songinterpret = document.getElementById("InterpretGrabber").innerHTML
-  songurl = document.getElementById("UrlGrabber").innerHTML
-// Define the song data as a JavaScript object
-var songData = {
-title: songtitle,
-  interpret: songinterpret,
-  url: songurl
-};
+    songtitle = document.getElementById("TitleGrabber").innerHTML
+    songinterpret = document.getElementById("InterpretGrabber").innerHTML
+    songurl = document.getElementById("UrlGrabber").innerHTML
+    // Define the song data as a JavaScript object
+    var songData = {
+    title: songtitle,
+    interpret: songinterpret,
+    url: songurl
+  }
 
 // Encode the JavaScript object into a JSON string
 var jsonString = JSON.stringify(songData);
@@ -172,27 +166,6 @@ var player;
   } else {
     element.style.display = "none";
   }
-}
-function secret() {
-  console.log("YOU ACHIEVED THE WONDERFULL SECRET OF...");
-  console.log("https://tinyurl.com/sesecret");
-  console.log("DEBUG LOG (console.log())");
-  console.error("DEBUG ERROR (console.error())");
-  console.warn("DEBUG WARN (console.warn())");
-  window.open("https://tinyurl.com/sesecret");
-  window.open("https://tinyurl.com/sesecret");
-  window.open("https://tinyurl.com/sesecret");
-  window.open("https://tinyurl.com/sesecret");
-  window.open("https://tinyurl.com/sesecret");
-  window.open("https://tinyurl.com/sesecret");
-  window.open("https://tinyurl.com/sesecret");
-  window.open("https://tinyurl.com/sesecret");
-  window.open("https://tinyurl.com/sesecret");
-  window.open("https://tinyurl.com/sesecret");
-  console.error("TOO MANY NEW OPEN THINGS");
-  console.warn("THE IDEAS ARE GOING TO BE LESS AND LESS");
-  document.fullscreenEnabled = true;
-  console.log("WOHOOOO");
 }
 </script>
 </body>
