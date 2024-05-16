@@ -92,10 +92,15 @@ function add_favorite() {
 
 // Encode the JavaScript object into a JSON string
 var jsonString = JSON.stringify(songData);
-var savecookie = JSON.stringify(document.getElementById("oldcookiesave").innerHTML)
+
+var favoritesCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('favorites='));
+
+if (favoritesCookie) {
+    // Extract JSON string from the 'favorites' cookie value
+    var savecookie = decodeURIComponent(favoritesCookie.split('=')[1]);
 
 // Set the cookie named 'favorites' with the encoded JSON string
-document.cookie = "favorites=" + savecookie + encodeURIComponent(jsonString) + "; expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
+document.cookie = "favorites=" + encodeURIComponent(savecookie) + encodeURIComponent(jsonString) + "; expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
 
 }
 // Test Start
