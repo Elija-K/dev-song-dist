@@ -73,13 +73,17 @@
   <p id="UrlGrabber" hidden>{{ page.url }}</p>
   <p id="TitleGrabber" hidden>{{ page.title }}</p>
   <p id="InterpretGrabber" hidden>{{ page.interpret }}</p>
+  <p id="oldcookiesave" hidden>undefined</p>
   
   <script defer>
 function add_favorite() {
     var songtitle = "";
     var songinterpret = "";
     var songurl = "";
+    var oldcookies = "";
 
+    oldcookies = document.cookie;
+    document.getElementById("oldcookiesave").innerHTML = oldcookies
     songtitle = document.getElementById("TitleGrabber").innerHTML;
     songinterpret = document.getElementById("InterpretGrabber").innerHTML;
     songurl = document.getElementById("UrlGrabber").innerHTML;
@@ -88,9 +92,10 @@ function add_favorite() {
 
 // Encode the JavaScript object into a JSON string
 var jsonString = JSON.stringify(songData);
+var savecookie = JSON.stringify(document.getElementById("oldcookiesave").innerHTML)
 
 // Set the cookie named 'favorites' with the encoded JSON string
-document.cookie = "favorites=" + encodeURIComponent(jsonString) + "; expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
+document.cookie = "favorites=" + savecookie + encodeURIComponent(jsonString) + "; expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
 
 }
 // Test Start
