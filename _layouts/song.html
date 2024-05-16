@@ -73,30 +73,24 @@
   <p id="UrlGrabber" hidden>{{ page.url }}</p>
   <p id="TitleGrabber" hidden>{{ page.title }}</p>
   <p id="InterpretGrabber" hidden>{{ page.interpret }}</p>
+  
   <script defer>
-  function add_favorite() {
+function add_favorite() {
     var songtitle = "";
     var songinterpret = "";
     var songurl = "";
 
-    songtitle = document.getElementById("TitleGrabber").innerHTML
-    songinterpret = document.getElementById("InterpretGrabber").innerHTML
-    songurl = document.getElementById("UrlGrabber").innerHTML
+    songtitle = document.getElementById("TitleGrabber").innerHTML;
+    songinterpret = document.getElementById("InterpretGrabber").innerHTML;
+    songurl = document.getElementById("UrlGrabber").innerHTML;
     // Define the song data as a JavaScript object
-    var songData = {
-    title: songtitle,
-    interpret: songinterpret,
-    url: songurl
-  }
+    var songData ={title: songtitle,interpret: songinterpret,url: songurl};
 
 // Encode the JavaScript object into a JSON string
 var jsonString = JSON.stringify(songData);
 
 // Set the cookie named 'favorites' with the encoded JSON string
 document.cookie = "favorites=" + encodeURIComponent(jsonString) + "; expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
-
-// Verify that the cookie is set
-console.log("Cookie: "jsonString" has been set.");
 
 }
 // Test Start
