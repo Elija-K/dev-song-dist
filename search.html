@@ -79,8 +79,12 @@ function list_favorite() {
         var jsonString = decodeURIComponent(favoritesCookie.split('=')[1]);
 
         try {
-            // Parse the JSON string into an object
-            var songData = JSON.parse(jsonString);
+              if (jsonString.trim() !== '') {
+                var songData = JSON.parse(jsonString);
+              } else {
+                console.error("JSON string from 'favorites' cookie is empty.");
+              }
+
 
             // Create HTML content for search result
             var searchResultHTML = '<li><a href="' + songData.url + '">' + songData.title + ' - ' + songData.interpret + '</a></li>';
