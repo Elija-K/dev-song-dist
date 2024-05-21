@@ -7,7 +7,7 @@ title: Suchen
     <input class="form-control me-2 mt-4 mb-4" type="text" placeholder="Suchen" id="search-box-js" name="query" oninput="search_text()">
     <div class="container-fluid">
     <button class="btn btn-secondary" onclick="random_song()">Random Song</button>
-    <button class="btn btn-secondary" onclick="reset_favorite()">ALLE Favoriten löschen</button>
+    <button class="btn btn-secondary" onclick="reset_favorite()">Favoriten löschen</button>
     </div>
   </div>
   <h5 id="favorite-title">Deine Favoriten</h5>
@@ -44,9 +44,6 @@ title: Suchen
       if (post.title.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
           post.interpret.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
         results.push(post);
-        console.log("Post: " + post);
-        console.log("query: " + query);
-        console.log("Search Index: " + searchIndex);
       }
     }
     return results;
@@ -64,14 +61,12 @@ function search_list(query) {
     html += '<li><a href="' + post.url + '">' + post.title + ' - ' + post.interpret + '</a></li>';
   }
   // Anzahl Songs
-  var resultslenght = "";
-  let stringresults = results
-  const resultsarray = stringresults.split(",");
-  resultslenght = resultsarray.length
+  let resultsarray = "[" + results + "]";
+  const bigarray = resultsarray.flat(1);
+  let listarraylength = bigarray.length;
+  // SHOW IT
   document.getElementById('search-results').innerHTML = html;
-  document.getElementById("search-title").innerHTML = "Songs " + "(" + resultslenght + ")";
-  console.log("html from search: " + html);
-  console.log("Results: " + results);
+  document.getElementById("search-title").innerHTML = "Songs " + "(" + listarraylength + ")";
 }
 function random_song() {
   var songlist = "";
