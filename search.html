@@ -13,7 +13,7 @@ title: Suchen
   <h5 id="favorite-title">Deine Favoriten</h5>
   <div id="favorite-results">
   </div>
-  <h5 id="search-title">Alle songs</h5>
+  <h5 id="search-title">Alle Songs</h5>
   <div id="search-results">
     
   </div> 
@@ -44,6 +44,9 @@ title: Suchen
       if (post.title.toLowerCase().indexOf(query.toLowerCase()) >= 0 ||
           post.interpret.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
         results.push(post);
+        console.log("Post: " + post);
+        console.log("query: " + query);
+        console.log("Search Index: " + searchIndex);
       }
     }
     return results;
@@ -85,6 +88,7 @@ function list_favorite() {
 
         if (jsonString === "") {
           document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
+          document.getElementById("favorite-title").innerHTML = "Deine Favoriten (0)";
         }
         else {
         try {
