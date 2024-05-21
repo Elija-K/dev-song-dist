@@ -64,7 +64,9 @@ function search_list(query) {
     html += '<li><a href="' + post.url + '">' + post.title + ' - ' + post.interpret + '</a></li>';
   }
   // Anzahl Songs
-  resultsarray = results.split(",");
+  var resultslenght = "";
+  let stringresults = results
+  const resultsarray = stringresults.split(",");
   resultslenght = resultsarray.length
   document.getElementById('search-results').innerHTML = html;
   document.getElementById("search-title").innerHTML = "Songs " + "(" + resultslenght + ")";
