@@ -10,10 +10,10 @@ title: Suchen
     <button class="btn btn-secondary" onclick="reset_favorite()">ALLE Favoriten löschen</button>
     </div>
   </div>
-  <h5>Deine Favoriten</h5>
+  <h5 id="favorite-title">Deine Favoriten</h5>
   <div id="favorite-results">
   </div>
-  <h5>Alle songs</h5>
+  <h5 id="search-title">Alle songs</h5>
   <div id="search-results">
     
   </div> 
@@ -102,12 +102,15 @@ function list_favorite() {
 
 
             console.log('Generated HTML content:', searchResultHTML); // Debugging output
+            titleResultHTML = favoriteSongs.length
 
             // Display the search result on the webpage
-            var searchResultsList = document.getElementById('favorite-results');
-            if (searchResultsList) {
+            var searchFavoriteList = document.getElementById('favorite-results');
+            var titleFavoriteList = document.getElementById("favorite-title");
+            if (searchFavoriteList) {
                 // Use innerHTML to set the generated HTML content
-                searchResultsList.innerHTML = searchResultHTML;
+                searchFavoriteList.innerHTML = searchResultHTML;
+                titleFavoriteList.innerHTML = "Deine Favoriten " + "(" + titleResultHTML + ")"
                 console.log('HTML content set to element with ID "favorite-results".'); // Debugging output
             } else {
                 console.error("Element with ID 'favorite-results' not found.");
