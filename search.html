@@ -5,7 +5,10 @@ title: Suchen
 <body>
   <div>
     <input class="form-control me-2 mt-4 mb-4" type="text" placeholder="Suchen" id="search-box-js" name="query" oninput="search_text()">
+    <div class="container-fluid">
     <button class="btn btn-secondary" onclick="random_song()">Random Song</button>
+    <button class="btn btn-secondary" onclick="reset_favorite()">ALLE Favoriten Löschen</button>
+    </div>
   </div>
   <h5>Deine Favoriten</h5>
   <div id="favorite-results">
@@ -114,6 +117,10 @@ function list_favorite() {
         console.error("Cookie 'favorites' not found.");
         document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :("
       }
+}
+function reset_favorite() {
+  document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
+  document.cookie = "favorites=; expires=Mon, 07 May 2029 12:00:00 UTC; path=/;";
 }
 
 search_list("");
