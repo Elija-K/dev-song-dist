@@ -84,7 +84,7 @@ function add_favorite() {
     var existingFavorites = get_existing_favorites();
 
     // Füge den neuen Favoriten zur Liste hinzu
-    existingFavorites.push({ title: songtitle, interpret: songinterpret, url: songurl });
+    existingFavorites.push({ title: songtitle, interpret: songinterpret, url: "/tc-song-dist/" + songurl });
 
     // Encode die aktualisierte Favoritenliste in JSON
     var jsonString = JSON.stringify(existingFavorites);
