@@ -63,7 +63,7 @@ function search_list(query) {
   // Anzahl Songs
   let resultsarray = "[" + results + "]";
   console.log(resultsarray);
-  const bigarray = resultsarray;
+  const bigarray = resultsarray.split(",");
   let listarraylength = bigarray.length;
   // SHOW IT
   document.getElementById('search-results').innerHTML = html;
