@@ -83,7 +83,7 @@ function list_favorite() {
         var jsonString = decodeURIComponent(favoritesCookie.split('=')[1]);
         console.log('Decoded JSON string:', jsonString); // Debugging output
 
-        if (jsonString === undefined) {
+        if (jsonString === "") {
           document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
         }
         else {
