@@ -21,7 +21,6 @@ title: Suchen
 
 <script>
   {% assign songs = site.html_pages | where: "dir", "/songs/" %}
-  console.log("Songs: " + songs);
   var searchIndex = [
     {% for page in songs %}
       {
@@ -61,9 +60,12 @@ function search_list(query) {
   var html = '';
   for (var i = 0; i < results.length; i++) {
     var post = results[i];
+    console.log("results (i): " + results[i]);
     html += '<li><a href="' + post.url + '">' + post.title + ' - ' + post.interpret + '</a></li>';
   }
   document.getElementById('search-results').innerHTML = html;
+  console.log("html from search: " + html);
+  console.log("Results: " + results);
 }
 function random_song() {
   var songlist = "";
