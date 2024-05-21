@@ -83,15 +83,15 @@ function list_favorite() {
         var jsonString = decodeURIComponent(favoritesCookie.split('=')[1]);
         console.log('Decoded JSON string:', jsonString); // Debugging output
 
+        if (jsonString === "undefined") {
+          document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
+        }
+        else {
         try {
             // Parse the JSON string into an array of song objects
             var favoriteSongs = JSON.parse(jsonString);
             console.log('Parsed favorite songs:', favoriteSongs); // Debugging output
-            if (favoriteSongs === "Deleted") {
-              document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
-              document.cookie = "expires=Mon, 07 May 2029 12:00:00 UTC; path=/;";
-            }
-            else {
+
             // Create HTML content for displaying all favorite songs
             var searchResultHTML = '';
 
@@ -99,6 +99,7 @@ function list_favorite() {
             favoriteSongs.forEach(function(song) {
                 searchResultHTML += '<li><a href="' + song.url + '">' + song.title + ' - ' + song.interpret + '</a></li>';
             });
+
 
             console.log('Generated HTML content:', searchResultHTML); // Debugging output
 
@@ -124,7 +125,7 @@ function list_favorite() {
 }
 function reset_favorite() {
   document.getElementById("favorite-results").innerHTML = "Du hast keine Favoriten :(";
-  document.cookie = "favorites=Deleted; expires=Mon, 07 May 2029 12:00:00 UTC; path=/;";
+  document.cookie = "favorites=; expires=Mon, 07 May 2029 12:00:00 UTC; path=/;";
 }
 
 search_list("");
