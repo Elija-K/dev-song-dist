@@ -21,6 +21,7 @@ title: Suchen
 
 <script>
   {% assign songs = site.html_pages | where: "dir", "/songs/" %}
+  console.log("Songs: " + songs);
   var searchIndex = [
     {% for page in songs %}
       {
@@ -47,7 +48,6 @@ title: Suchen
         console.log("Post: " + post);
         console.log("query: " + query);
         console.log("Search Index: " + searchIndex);
-        console.log("Songs:" + songs)
       }
     }
     return results;
