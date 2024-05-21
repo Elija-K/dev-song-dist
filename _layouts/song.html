@@ -90,7 +90,7 @@ function add_favorite() {
     var jsonString = JSON.stringify(existingFavorites);
 
     // Setze das Cookie 'favorites' mit der aktualisierten Favoritenliste
-    document.cookie = "favorites=" + encodeURIComponent(jsonString) + "; expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
+    document.cookie = "favorites=" + encodeURIComponent(jsonString) + ";" + " expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
 }
 
 function get_existing_favorites() {

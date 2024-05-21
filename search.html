@@ -105,11 +105,11 @@ function list_favorite() {
                 console.log('HTML content set to element with ID "favorite-results".'); // Debugging output
             } else {
                 console.error("Element with ID 'favorite-results' not found.");
-                document.getElementById("favorite-results").innerHTML = "Es ist ein Fehler aufgetreten (Error: 01) :("
+                document.getElementById("favorite-results").innerHTML = "Es ist ein Fehler aufgetreten (Element Fehler) :("
             }
         } catch (error) {
             console.error("Error parsing JSON from 'favorites' cookie:", error);
-            document.getElementById("favorite-results").innerHTML = "Es ist ein Fehler aufgetreten (Error: 02) :("
+            document.getElementById("favorite-results").innerHTML = "Es ist ein Fehler aufgetreten (Parsing Fehler) :("
         }
     } else {
         console.error("Cookie 'favorites' not found.");
