@@ -25,10 +25,6 @@ Do findisch du noh alli Ahleitige die dir chönd helfe, wenn du hilf bruuchsch! 
     <button class="btn btn-secondary">dApp installierä</button>
 </a>
 
-<a href="/tc-song-dist/add-favorite.html">
-    <button class="btn btn-secondary">Favorite hinzuefüegä</button>
-</a>
-
 <script>
     if (!document.cookie) {
         document.cookie = "favorites=; expires=Mon, 07 May 2029 12:00:00 UTC; path=/";
