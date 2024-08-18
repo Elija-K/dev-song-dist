@@ -17,7 +17,7 @@ Hier kannst du Songtexte zu Liedern anschauen und sie gleich in der App anhören
 ## Ahleitige
 Falls du Hilfe benötigts dann kannst du unten auf Hilfe klicken und dann dein Problem auswählen
 
-<a href="/tc-song-dist/help.html">
+<a href="/help.html">
     <button class="btn btn-secondary">Hilfe</button>
 </a>
 
